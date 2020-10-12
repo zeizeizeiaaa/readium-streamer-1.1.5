@@ -281,7 +281,10 @@ class EpubParser : PublicationParser {
     }
 
     private fun parseNcxDocument(container: Container, publication: Publication) {
-        val ncxLink = publication.resources.firstOrNull { it.typeLink == "application/x-dtbncx+xml" }
+        //it.typeLink == "application/x-dtbncx+xml"
+        val ncxLink = publication.resources.firstOrNull {
+            it.title == "ncx"
+        }
                 ?: return
         val ncxDocument = try {
             xmlDocumentForResource(ncxLink, container)
