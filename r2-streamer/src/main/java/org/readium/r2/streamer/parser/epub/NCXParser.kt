@@ -44,6 +44,11 @@ class NCXParser {
         val newNode = Link()
         newNode.href = normalize(ncxDocumentPath, element.getFirst("content")?.attributes?.get("src"))
         newNode.title = element.getFirst("navLabel")!!.getFirst("text")!!.text
+        val a = element.get("navLabel")
+        val b = element.children
+        val c = element.attributes
+        val name = element.name
+        val text = element.text
         element.get("navPoint")?.let {
             for (childNode in it) {
                 newNode.children.plusAssign(node(childNode, type))
